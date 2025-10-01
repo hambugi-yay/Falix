@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./action-runner
-        run: npm ci
+        run: npm install
 
       - name: Run script
         working-directory: ./action-runner
