@@ -1,0 +1,31 @@
+name: Falix 24/7 Cron Runner
+
+on:
+  schedule:
+    - cron: '0 * * * *'   # 매 정시 실행 (원하면 수정)
+  workflow_dispatch: {}    # 수동 실행 가능
+
+jobs:
+  run-puppeteer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: ./action-runner
+        run: npm ci
+
+      - name: Run script
+        working-directory: ./action-runner
+        env:
+          TARGET_SERVER: ${{ secrets.TARGET_SERVER }}
+          START_URL: ${{ secrets.START_URL }}
+          HEADLESS: 'true'
+          NAV_TIMEOUT: '60000'
+        run: npm start
