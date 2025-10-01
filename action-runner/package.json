@@ -1,0 +1,16 @@
+{
+  "name": "falix-24-7",
+  "version": "1.0.0",
+  "description": "FalixNodes auto runner using Puppeteer",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "puppeteer": "^20.0.0",
+    "dotenv": "^16.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
